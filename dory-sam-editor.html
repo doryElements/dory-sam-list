@@ -1,5 +1,9 @@
 <link rel="import" href="../polymer/polymer.html">
 
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../iron-ajax/iron-ajax.html">
+<link rel="import" href="../iron-image/iron-image.html">
+<link rel="import" href="dory-sam-editor-servers.html">
 <!--
 `dory-sam-editor`
 Dory Service Application Mapping Form Editor
@@ -14,7 +18,16 @@ Dory Service Application Mapping Form Editor
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]</h2>
+
+    <h2>Hello [[data.name]]</h2>
+    <paper-input value="{{data.name}}" char-counter maxlength="10" label="Application name"></paper-input>
+    <paper-input value="{{data.url}}" char-counter maxlength="10" label="Url">
+      <div prefix>http://</div>
+    </paper-input>
+
+    <dory-sam-editor-servers servers="{{data.servers}}"></dory-sam-editor-servers>
+
+
   </template>
 
   <script>
@@ -23,11 +36,27 @@ Dory Service Application Mapping Form Editor
       is: 'dory-sam-editor',
 
       properties: {
-        prop1: {
-          type: String,
-          value: 'dory-sam-editor',
+          youtubeResponse: {
+            type: Object
+          },
+        data: {
+          type: Object,
+          notify: true,
+          value: function () {
+              return {
+                  name: 'Oura',
+                  servers: [
+                      {host: 'machine1', url:"http;///"},
+                      {host: 'machine2', url:"http;///url2"},
+                  ]
+              };
+          },
         },
       },
+        handleYoutubeResponse: function (e) {
+          console.log(e);
+
+        },
 
     });
   </script>

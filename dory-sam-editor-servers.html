@@ -1,0 +1,37 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`dory-sam-editor-servers`
+
+
+@demo demo/index.html 
+-->
+
+<dom-module id="dory-sam-editor-servers">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+        <template is="dom-repeat" items="{{servers}}" as="server">
+            <div>{{index}} - </div>
+            <paper-input value="{{server.host}}" char-counter maxlength="10" label="Server"></paper-input>
+            <paper-input value="{{server.url}}" char-counter maxlength="10" label="url"></paper-input>
+        </template>
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'dory-sam-editor-servers',
+
+            properties: {
+                servers:{
+                    type: Array
+                },
+            },
+
+        });
+    </script>
+</dom-module>

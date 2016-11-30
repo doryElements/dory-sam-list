@@ -12,6 +12,8 @@
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
     <link rel="import" href="../dory-sam-editor.html">
 
+    <link rel="import" href="demo-data-display.html">
+
     <style is="custom-style" include="demo-pages-shared-styles">
     </style>
   </head>
@@ -19,9 +21,14 @@
     <div class="vertical-section-container centered">
       <h3>Basic dory-sam-editor demo</h3>
       <demo-snippet>
-        <template>
-          <dory-sam-editor></dory-sam-editor>
+        <template is="dom-bind">
+          <demo-data-display data="[[data]]"></demo-data-display>
+          <dory-sam-editor data="{{data}}"></dory-sam-editor>
         </template>
+        <script>
+            var demo = document.querySelector('#demo');
+
+        </script>
       </demo-snippet>
     </div>
   </body>

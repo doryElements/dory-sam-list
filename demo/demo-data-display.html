@@ -1,0 +1,44 @@
+<link rel="import" href="../../polymer/polymer.html">
+
+<!--
+`demo-data-display`
+
+
+@demo demo/index.html 
+-->
+
+<dom-module id="demo-data-display">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+        <div>Data</div>
+        <pre>[[dataStr]]</pre>
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'demo-data-display',
+
+            properties: {
+                data: {
+                    type: Object
+                },
+                dataStr: {
+                    type: String
+                },
+            },
+            observers: [
+                '_dataChanged(data.*)'
+            ],
+
+            _dataChanged: function (dataChange) {
+                this.dataStr =JSON.stringify(this.data, null, '\t');
+            },
+
+        });
+    </script>
+</dom-module>
