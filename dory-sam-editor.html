@@ -1,9 +1,21 @@
 <link rel="import" href="../polymer/polymer.html">
 
+ 
+
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+
 <link rel="import" href="../paper-input/paper-input.html">
-<link rel="import" href="../iron-ajax/iron-ajax.html">
-<link rel="import" href="../iron-image/iron-image.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+
+<link rel="import" href="../paper-card/paper-card.html">
+<link rel="import" href="../paper-fab/paper-fab.html">
+
+<link rel="import" href="../iron-icons/iron-icons.html">
+
+<link rel="import" href="dory-listbox.html">
 <link rel="import" href="dory-sam-editor-servers.html">
+
 <!--
 `dory-sam-editor`
 Dory Service Application Mapping Form Editor
@@ -12,52 +24,59 @@ Dory Service Application Mapping Form Editor
 -->
 
 <dom-module id="dory-sam-editor">
-  <template>
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-
-    <h2>Hello [[data.name]]</h2>
-    <paper-input value="{{data.name}}" char-counter maxlength="10" label="Application name"></paper-input>
-    <paper-input value="{{data.url}}" char-counter maxlength="10" label="Url">
-      <div prefix>http://</div>
-    </paper-input>
-
-    <dory-sam-editor-servers servers="{{data.servers}}"></dory-sam-editor-servers>
+    <template>
+        <style>
+            :host {
+                display: block;
+                padding: 10px;
+                @apply(--layout-vertical);
+                @apply(--layout-flex);
+            }
+        </style>
 
 
-  </template>
+        <paper-input value="{{data.app}}" char-counter maxlength="20" label="Applications"></paper-input>
 
-  <script>
-    Polymer({
+        <dory-listbox selected="{{data.env}}" label="Environnements" code-labels="[[environments]]"></dory-listbox>
 
-      is: 'dory-sam-editor',
 
-      properties: {
-          youtubeResponse: {
-            type: Object
-          },
-        data: {
-          type: Object,
-          notify: true,
-          value: function () {
-              return {
-                  name: 'Oura',
-                  servers: [
-                      {host: 'machine1', url:"http;///"},
-                      {host: 'machine2', url:"http;///url2"},
-                  ]
-              };
-          },
-        },
-      },
-        handleYoutubeResponse: function (e) {
-          console.log(e);
 
-        },
+        <paper-input value="{{data.uri}}" placeholder="www.example.com"  label="URI">
+            <div prefix>
+                http://
+            </div>
+            <paper-icon-button suffix icon="clear"></paper-icon-button>
+        </paper-input>
 
-    });
-  </script>
+        <dory-sam-editor-servers servers="{{data.servers}}"></dory-sam-editor-servers>
+
+        <iron-autogrow-textarea rows="4" placeholder="Description"></iron-autogrow-textarea>
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'dory-sam-editor',
+
+            properties: {
+                data: {
+                    type: Object,
+                    notify: true,
+                },
+                environments: {
+                    type: Array,
+                    notify: true,
+                    value: function () {
+                        return [
+                            {code: 'QUALIF', label: 'Qualification'},
+                            {code: 'REC', label: 'Recette'},
+                            {code: 'PROD', label: 'Production'}
+                        ];
+                    }
+                },
+            }
+
+
+        });
+    </script>
 </dom-module>
