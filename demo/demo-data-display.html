@@ -1,5 +1,7 @@
 <link rel="import" href="../../polymer/polymer.html">
 
+<link rel="import" href="../../iron-collapse/iron-collapse.html">
+
 <!--
 `demo-data-display`
 
@@ -13,9 +15,19 @@
             :host {
                 display: block;
             }
+            .collapse-content {
+                padding: 15px;
+                border: 1px solid #dedede;
+            }
         </style>
-        <div>Data</div>
-        <pre>[[dataStr]]</pre>
+
+        <div on-tap="toggleData">Data Model</div>
+        <iron-collapse id="collapseData" opened="{{dataOpened}}">
+            <div  class="collapse-content">
+                <pre>[[dataStr]]</pre>
+            </div>
+        </iron-collapse>
+
     </template>
 
     <script>
@@ -30,14 +42,22 @@
                 dataStr: {
                     type: String
                 },
+                dataOpened: {
+                    type: Boolean,
+                    value: false
+                }
             },
             observers: [
                 '_dataChanged(data.*)'
             ],
 
             _dataChanged: function (dataChange) {
-                this.dataStr =JSON.stringify(this.data, null, '\t');
+                this.dataStr =JSON.stringify(this.data, null, '  ');
             },
+            toggleData: function () {
+//                this.dataOpened= !this.dataOpened;
+                this.$.collapseData.toggle();
+            }
 
         });
     </script>
