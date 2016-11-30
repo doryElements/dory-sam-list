@@ -7,13 +7,20 @@ Dory Service Application Mapping Form Editor
 
 ## Install the Polymer-CLI
 
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your application locally.
+First, make sure you have the [NodeJs](https://nodejs.org/en/) installed. Then run `npm run dev-install` to install all global dependencies to run your application locally.
 
-## Viewing Your Application
+## Viewing Your Web Components Demo
 
 ```
-$ polymer serve
+$ npm run dev
 ```
+
+## Test Your Web Components
+
+```
+$ npm run test
+```
+
 
 ## Building Your Application
 
