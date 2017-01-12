@@ -25,8 +25,6 @@
                 };
                 --custom-color-header: var(--paper-blue-300);
                 --custom-color-subtitle: var(--paper-blue-300);
-                --custom-color-url: var(--paper-yellow-700);
-                --custom-color-server: var(--paper-purple-800);
 
                 --paper-card-header-color: var(--custom-color-header);
             }
@@ -36,13 +34,23 @@
                 color: var(--custom-color-subtitle);
             }
 
-            .iconplace {
-                color: var(--custom-color-url);
+            .cardServer {
+                --dory-item-color:   var(--dory-icon-color-server, var(--paper-purple-800));
+            }
+            .cardUri {
+                --dory-item-color:   var(--paper-yellow-700);
+            }
+            .cardDatabase {
+                --dory-item-color:   var(--paper-green-400);
             }
 
-            .iconserver {
-                color: var(--custom-color-server);
-            }
+            /*.iconplace {*/
+                /*color: var(--custom-color-url);*/
+            /*}*/
+
+            /*.iconserver {*/
+                /*color: var(--custom-color-server);*/
+            /*}*/
 
             .iconslist {
                 @apply(--layout-vertical);
@@ -77,9 +85,9 @@
                         <!--</paper-icon-item>-->
                     <!--</template>-->
 
-                    <dory-sam-card-item items="[[data.uris]]" icon="maps:place"></dory-sam-card-item>
-                    <dory-sam-card-item items="[[data.servers]]" icon="dns"></dory-sam-card-item>
-                    <dory-sam-card-item items="[[data.databases]]" icon="device:storage"></dory-sam-card-item>
+                    <dory-sam-card-item items="[[data.uris]]" icon="maps:place" class="cardUri"></dory-sam-card-item>
+                    <dory-sam-card-item items="[[data.servers]]" icon="dns" class="cardServer"></dory-sam-card-item>
+                    <dory-sam-card-item items="[[data.databases]]" icon="device:storage" class="cardDatabase"></dory-sam-card-item>
                 </div>
 
             </div>

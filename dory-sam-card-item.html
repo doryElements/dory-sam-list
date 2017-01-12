@@ -13,13 +13,15 @@
             :host {
                 display: block;
             }
-            .blue {
-                color: var(--paper-purple-800);
+
+            .sam {
+                color: var(--dory-item-color, var(--google-red-500));
             }
+
         </style>
         <template is="dom-repeat" items="[[items]]" as="it">
             <paper-icon-item>
-                <iron-icon icon="[[icon]]" class="[[ironcolor]]" item-icon></iron-icon>
+                <iron-icon icon="[[icon]]" class="sam" item-icon></iron-icon>
                 [[it.value]]
             </paper-icon-item>
         </template>
@@ -39,7 +41,7 @@
                 },
                 iconcolor: {
                     type: String,
-                    value: ".blue"
+                    value: "blue"
                 }
             },
 

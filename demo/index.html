@@ -22,6 +22,7 @@
                 margin-right: auto;
             }
         }
+
     </style>
 </head>
 <body>
@@ -30,7 +31,7 @@
     <demo-snippet>
         <template is="dom-bind" id="demo">
             <demo-data-display data="[[data]]"></demo-data-display>
-            <dory-sam-card data="{{data}}"></dory-sam-card>
+            <dory-sam-card data="{{data}}" class="cardColor"></dory-sam-card>
         </template>
         <script>
             var demo = document.querySelector('#demo');
