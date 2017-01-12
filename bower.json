@@ -1,7 +1,7 @@
 {
-  "name": "dory-sam-editor",
+  "name": "dory-sam-list",
   "description": "Dory Service Application Mapping Form Editor",
-  "main": "dory-sam-editor.html",
+  "main": "dory-sam-list.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
     "paper-input": "PolymerElements/paper-input#^1.1.22",

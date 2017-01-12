@@ -1,0 +1,40 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`dory-list`
+
+
+@demo demo/index.html 
+-->
+
+<dom-module id="dory-sam-card">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+
+        </style>
+        <h2>[[data.app]]</h2>
+        <h3>[[data.env]]</h3>
+        <!--<ul>-->
+            <!--<li>[[data.uri]]</li>-->
+            <!--<li>[[data.server]]</li>-->
+            <!--<li>[[data.database]]</li>-->
+        <!--</ul>-->
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'dory-sam-card',
+
+            properties: {
+                data : {
+                    type: Object,
+                },
+            },
+
+        });
+    </script>
+</dom-module>

@@ -1,11 +1,11 @@
 {
-  "name": "dory-sam-editor",
+  "name": "dory-sam-list",
   "version": "0.0.1",
   "description": "Polymer Dory SAM Editor",
   "main": "index.html",
   "repository": {
     "type": "git",
-    "url": "https://github.com/doryElements/dory-sam-editor.git"
+    "url": "https://github.com/doryElements/dory-sam-list.git"
   },
   "directories": {
     "test": "test"
@@ -15,7 +15,7 @@
     "dev": "polymer serve -p 8080 | npm run watch",
     "test": "polymer test",
     "dev-install": "npm install -g bower polymer-cli browser-sync",
-    "watch": "browser-sync start --proxy localhost:8080 --startPath /components/dory-sam-editor/demo/ --files *.html,*.js,demo/*"
+    "watch": "browser-sync start --proxy localhost:8080 --startPath /components/dory-sam-list/demo/ --files *.html,*.js,demo/*"
   },
   "author": "",
   "license": "ISC"

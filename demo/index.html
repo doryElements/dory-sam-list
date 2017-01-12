@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>dory-sam-editor demo</title>
+    <title>dory-sam-card demo</title>
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="../dory-sam-editor.html">
+    <link rel="import" href="../dory-sam-card.html">
 
     <link rel="import" href="demo-data-display.html">
 
@@ -26,11 +26,11 @@
 </head>
 <body>
 <div class="vertical-section-container centered">
-    <h3>Basic dory-sam-editor demo</h3>
+    <h3>Basic dory-sam-card demo</h3>
     <demo-snippet>
-        <template  is="dom-bind" id="demo" >
+        <template is="dom-bind" id="demo">
             <demo-data-display data="[[data]]"></demo-data-display>
-            <dory-sam-editor data="{{data}}"></dory-sam-editor>
+            <dory-sam-card data="{{data}}"></dory-sam-card>
         </template>
         <script>
             var demo = document.querySelector('#demo');
@@ -38,10 +38,13 @@
                 return {
                     app: 'Oura',
                     env: 'REC',
-                    uri: '',
+                    uris: [
+                        {uri: 'http://uri1'},
+                        {uri: 'http://uri2'}
+                        ],
                     servers: [
-                                {name: 'serv1', zone: 'LAN'},
-                                {name: 'serv2', zone: 'DMZ'},
+                        {name: 'serv1', zone: 'LAN'},
+                        {name: 'serv2', zone: 'DMZ'},
                     ]
                 }
             };
