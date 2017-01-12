@@ -1,0 +1,48 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`dory-sam-card-item`
+
+
+@demo demo/index.html 
+-->
+
+<dom-module id="dory-sam-card-item">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+            .blue {
+                color: var(--paper-purple-800);
+            }
+        </style>
+        <template is="dom-repeat" items="[[items]]" as="it">
+            <paper-icon-item>
+                <iron-icon icon="[[icon]]" class="[[ironcolor]]" item-icon></iron-icon>
+                [[it.value]]
+            </paper-icon-item>
+        </template>
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'dory-sam-card-item',
+
+            properties: {
+                items: {
+                    type: Object
+                },
+                icon: {
+                    type: String
+                },
+                iconcolor: {
+                    type: String,
+                    value: ".blue"
+                }
+            },
+
+        });
+    </script>
+</dom-module>
