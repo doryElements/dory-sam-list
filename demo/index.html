@@ -37,14 +37,17 @@
             var generator = function () {
                 return {
                     app: 'Oura',
-                    env: 'REC',
+                    env: 'PROD',
                     uris: [
-                        {uri: 'http://uri1'},
-                        {uri: 'http://uri2'}
+                        {value: 'http://uneUrlSuperLongue.pcq.desFois/onenrecontre'},
+                        {value: 'http://uneUrlSuperLongue.pcq.desFois/onenrecontre2'},
                         ],
                     servers: [
-                        {name: 'serv1', zone: 'LAN'},
-                        {name: 'serv2', zone: 'DMZ'},
+                        {value: 'serv1', zone: 'LAN'},
+                        {value: 'serv2', zone: 'DMZ'},
+                    ],
+                    databases: [
+                        {value: 'nomDatabase'}
                     ]
                 }
             };

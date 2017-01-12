@@ -1,5 +1,11 @@
 <link rel="import" href="../polymer/polymer.html">
-
+<link rel="import" href="../paper-card/paper-card.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../iron-icons/maps-icons.html">
+<link rel="import" href="../iron-icons/device-icons.html">
+<link rel="import" href="../paper-item/paper-icon-item.html">
+<link rel="import" href="../app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="dory-sam-card-item.html">
 <!--
 `dory-list`
 
@@ -12,16 +18,73 @@
         <style>
             :host {
                 display: block;
+                --paper-card-header-text: {
+                    text-align: center;
+                    font-weight: bold;
+                    font-size: 30px;
+                };
+                --custom-color-header: var(--paper-blue-300);
+                --custom-color-subtitle: var(--paper-blue-300);
+                --custom-color-url: var(--paper-yellow-700);
+                --custom-color-server: var(--paper-purple-800);
+
+                --paper-card-header-color: var(--custom-color-header);
+            }
+
+            .card-subtitle {
+                font-weight: bold;
+                color: var(--custom-color-subtitle);
+            }
+
+            .iconplace {
+                color: var(--custom-color-url);
+            }
+
+            .iconserver {
+                color: var(--custom-color-server);
+            }
+
+            .iconslist {
+                @apply(--layout-vertical);
             }
 
         </style>
-        <h2>[[data.app]]</h2>
-        <h3>[[data.env]]</h3>
-        <!--<ul>-->
-            <!--<li>[[data.uri]]</li>-->
-            <!--<li>[[data.server]]</li>-->
-            <!--<li>[[data.database]]</li>-->
-        <!--</ul>-->
+
+        <paper-card heading="[[data.app]]" alt="[[data.app]]">
+            <div class="card-content">
+                <span class="card-subtitle">[[localize(data.env)]]</span>
+
+                <div class="iconslist">
+
+                    <!--<template is="dom-repeat" items="[[data.uris]]" as="it">-->
+                        <!--<paper-icon-item>-->
+                            <!--<iron-icon icon="maps:place" class="iconplace" item-icon></iron-icon>-->
+                            <!--[[it.uri]]-->
+                        <!--</paper-icon-item>-->
+                    <!--</template>-->
+
+                    <!--<template is="dom-repeat" items="[[data.servers]]" as="it">-->
+                        <!--<paper-icon-item>-->
+                            <!--<iron-icon icon="dns" class="iconserver" item-icon></iron-icon>-->
+                            <!--[[it.name]] ([[it.zone]])-->
+                        <!--</paper-icon-item>-->
+                    <!--</template>-->
+
+                    <!--<template is="dom-repeat" items="[[data.databases]]" as="it">-->
+                        <!--<paper-icon-item>-->
+                            <!--<iron-icon icon="device:storage" class="iconstorage" item-icon></iron-icon>-->
+                            <!--[[it.name]]-->
+                        <!--</paper-icon-item>-->
+                    <!--</template>-->
+
+                    <dory-sam-card-item items="[[data.uris]]" icon="maps:place"></dory-sam-card-item>
+                    <dory-sam-card-item items="[[data.servers]]" icon="dns"></dory-sam-card-item>
+                    <dory-sam-card-item items="[[data.databases]]" icon="device:storage"></dory-sam-card-item>
+                </div>
+
+            </div>
+        </paper-card>
+
     </template>
 
     <script>
@@ -29,10 +92,24 @@
 
             is: 'dory-sam-card',
 
+            behaviors: [
+                Polymer.AppLocalizeBehavior
+            ],
+
             properties: {
-                data : {
+                data: {
                     type: Object,
                 },
+                language: {
+                    value: 'en'
+                },
+                resources: {
+                    value: function () {
+                        return {
+                            'en': {'REC': 'Recette', 'PROD': 'Production', 'QUALIF': 'Qualif'}
+                        }
+                    }
+                }
             },
 
         });
