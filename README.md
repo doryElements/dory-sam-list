@@ -1,8 +1,4 @@
-# \<dory-sam-list\> [![Build Status](https://travis-ci.org/doryElements/dory-sam-list.svg?branch=master)](https://travis-ci.org/doryElements/dory-sam-list) 
-[![Code Climate](https://codeclimate.com/github/doryElements/dory-sam-list/badges/gpa.svg)](https://codeclimate.com/github/doryElements/dory-sam-list)
-[![Test Coverage](https://codeclimate.com/github/doryElements/dory-sam-list/badges/coverage.svg)](https://codeclimate.com/github/doryElements/dory-sam-list/coverage)
-[![Issue Count](https://codeclimate.com/github/doryElements/dory-sam-list/badges/issue_count.svg)](https://codeclimate.com/github/doryElements/dory-sam-list)
-
+# \<dory-sam-list\> [![Build Status](https://travis-ci.org/doryElements/dory-sam-list.svg?branch=master)](https://travis-ci.org/doryElements/dory-sam-list)
 Dory Service Application Mapping Form Editor
 
 ## Install the Polymer-CLI

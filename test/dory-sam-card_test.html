@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>dory-sam-list test</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../dory-sam-card.html">
+</head>
+<body>
+<test-fixture id="basic">
+    <template>
+        <dory-sam-card></dory-sam-card>
+    </template>
+</test-fixture>
+
+<script>
+    suite('dory-sam-card', function () {
+        test('instantiating the element works', function () {
+            var element = fixture('basic');
+            assert.equal(element.is, 'dory-sam-card');
+        });
+    });
+    suite('dory-sam-card with data', function () {
+        test('instantiating the element works', function () {
+            var element = fixture('basic', {
+                data: {
+                    app: 'Oura',
+                    env: 'PROD'
+                }
+            });
+            assert.equal(element.is, 'dory-sam-card');
+        });
+    });
+</script>
+</body>
+</html>
