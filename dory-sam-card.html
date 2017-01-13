@@ -4,6 +4,7 @@
 <link rel="import" href="../iron-icons/maps-icons.html">
 <link rel="import" href="../iron-icons/device-icons.html">
 <link rel="import" href="../paper-item/paper-icon-item.html">
+<link rel="import" href="../paper-fab/paper-fab.html">
 <link rel="import" href="../app-localize-behavior/app-localize-behavior.html">
 <link rel="import" href="dory-sam-card-item.html">
 <!--
@@ -56,13 +57,13 @@ Custom property               | Description                                  | D
                 --dory-item-color:   var(--dory-icon-color-storage,var(--paper-green-400));
             }
 
-            /*.iconplace {*/
-                /*color: var(--custom-color-url);*/
-            /*}*/
+            paper-fab {
+                position: fixed;
+                right: 30px;
+                bottom: 30px;
+                --paper-fab-background: var(--paper-blue-100);
 
-            /*.iconserver {*/
-                /*color: var(--custom-color-server);*/
-            /*}*/
+            }
 
             .iconslist {
                 @apply(--layout-vertical);
@@ -70,38 +71,16 @@ Custom property               | Description                                  | D
 
         </style>
 
-        <paper-card heading="[[data.app]]" alt="[[data.app]]">
+        <paper-card heading="[[data.app]]" alt="[[data.app]]" elevation="3">
             <div class="card-content">
                 <span class="card-subtitle">[[localize(data.env)]]</span>
 
                 <div class="iconslist">
-
-                    <!--<template is="dom-repeat" items="[[data.uris]]" as="it">-->
-                        <!--<paper-icon-item>-->
-                            <!--<iron-icon icon="maps:place" class="iconplace" item-icon></iron-icon>-->
-                            <!--[[it.uri]]-->
-                        <!--</paper-icon-item>-->
-                    <!--</template>-->
-
-                    <!--<template is="dom-repeat" items="[[data.servers]]" as="it">-->
-                        <!--<paper-icon-item>-->
-                            <!--<iron-icon icon="dns" class="iconserver" item-icon></iron-icon>-->
-                            <!--[[it.name]] ([[it.zone]])-->
-                        <!--</paper-icon-item>-->
-                    <!--</template>-->
-
-                    <!--<template is="dom-repeat" items="[[data.databases]]" as="it">-->
-                        <!--<paper-icon-item>-->
-                            <!--<iron-icon icon="device:storage" class="iconstorage" item-icon></iron-icon>-->
-                            <!--[[it.name]]-->
-                        <!--</paper-icon-item>-->
-                    <!--</template>-->
-
                     <dory-sam-card-item items="[[data.uris]]" icon="maps:place" class="cardUri"></dory-sam-card-item>
                     <dory-sam-card-item items="[[data.servers]]" icon="dns" class="cardServer"></dory-sam-card-item>
                     <dory-sam-card-item items="[[data.databases]]" icon="device:storage" class="cardStorage"></dory-sam-card-item>
                 </div>
-
+                <paper-fab icon="icons:create" title="edit" mini></paper-fab>
             </div>
         </paper-card>
 
