@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="dory-sam-card.html">
+<link rel="import" href="../iron-list/iron-list.html">
 
 <!--
 `dory-list`
@@ -13,9 +14,26 @@
         <style>
             :host {
                 display: block;
+                @apply(--layout-fullbleed); /* height: 100vh; margin: 0 */
+                @apply(--layout-vertical); /* display: flex; flex-direction: column; */
+            }
+
+            iron-list {
+                background-color: #ddd;
+                @apply(--layout-flex-auto); /* flex: 1 1 auto; */
+            }
+
+            .item {
+                border-bottom: 5px solid #eee;
+                height: 20vh;
             }
         </style>
-        <h2>Hello [[prop1]]</h2>
+
+        <iron-list items="[[items]]" as="item" grid>
+            <template>
+                <dory-sam-card data="[[item]]"></dory-sam-card>
+            </template>
+        </iron-list>
     </template>
 
     <script>
@@ -24,9 +42,8 @@
             is: 'dory-sam-list',
 
             properties: {
-                prop1: {
-                    type: String,
-                    value: 'dory-sam-list',
+                items: {
+                    type: Array,
                 },
             },
 

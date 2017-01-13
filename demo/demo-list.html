@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>dory-sam-card demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../dory-sam-card.html">
+    <link rel="import" href="../dory-sam-list.html">
+
+    <link rel="import" href="demo-data-display.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+        demo-snippet {
+            --demo-snippet: {
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <h3>Basic dory-sam-list demo</h3>
+        <template is="dom-bind" id="demo">
+            <dory-sam-list items="[[data]]"></dory-sam-list>
+        </template>
+        <script>
+            var demo = document.querySelector('#demo');
+            var generator = function (id) {
+                return {
+                    app: 'Oura' + id,
+                    env: 'PROD' + id,
+                    uris: [
+                        {value: 'http://uneUrlSuperLongue.pcq.desFois/onenrecontre_' + id},
+                        {value: 'http://uneAutreUrl.pcq.desFois/uneautre_' + id},
+                    ],
+                    servers: [
+                        {value: 'serv1 ' + id, zone: 'LAN'},
+                        {value: 'serv2 ' + id, zone: 'DMZ'},
+                    ],
+                    databases: [
+                        {value: 'nomDatabase'}
+                    ]
+                }
+            };
+            demo.data = [];
+            for(i=0;i<5;i++) {
+                demo.data[i] = generator(i);
+            }
+        </script>
+</body>
+</html>
