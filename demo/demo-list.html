@@ -34,9 +34,10 @@
         <script>
             var demo = document.querySelector('#demo');
             var generator = function (id) {
+                var envs = ['PROD', 'QUALIF', 'REC']
                 return {
                     app: 'Oura' + id,
-                    env: 'PROD',
+                    env: envs[(i%envs.length)],
                     uris: [
                         {value: 'http://uneUrlSuperLongue.pcq.desFois/onenrecontre_' + id},
                         {value: 'http://uneAutreUrl.pcq.desFois/uneautre_' + id},
@@ -51,7 +52,7 @@
                 }
             };
             demo.data = [];
-            for(i=0;i<5;i++) {
+            for(i=0;i<20;i++) {
                 demo.data[i] = generator(i);
             }
         </script>
