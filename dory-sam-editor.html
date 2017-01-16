@@ -15,7 +15,7 @@
 <link rel="import" href="../paper-input/paper-textarea.html">
 
 <link rel="import" href="dory-listbox.html">
-<link rel="import" href="dory-sam-list-servers.html">
+<link rel="import" href="dory-sam-editor-servers.html">
 
 <!--
 `dory-sam-list`
@@ -24,7 +24,7 @@ Dory Service Application Mapping Form Editor
 @demo demo/index.html 
 -->
 
-<dom-module id="dory-sam-list">
+<dom-module id="dory-sam-editor">
     <template>
         <style>
             :host {
@@ -50,14 +50,14 @@ Dory Service Application Mapping Form Editor
             <paper-icon-button suffix icon="clear"></paper-icon-button>
         </paper-input>
 
-        <dory-sam-list-servers servers="{{data.servers}}"></dory-sam-list-servers>
+        <dory-sam-editor-servers servers="{{data.servers}}"></dory-sam-editor-servers>
 
     </template>
 
     <script>
         Polymer({
 
-            is: 'dory-sam-list',
+            is: 'dory-sam-editor',
 
             properties: {
                 data: {
