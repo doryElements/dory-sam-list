@@ -100,12 +100,12 @@
                 }
             },
 
-            validate: function(values) {
-                return false;
+
+            _getValidity: function(values) {
+                console.log('----- _getValidity');
+                return true;
             },
-            _getValidity: function() {
-                return false;
-            },
+
             _addServer: function () {
                 if (!this.servers) {
                     this.set('servers', []);

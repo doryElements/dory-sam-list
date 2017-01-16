@@ -66,6 +66,10 @@ Dory Service Application Mapping Form Editor
 
             is: 'dory-sam-editor',
 
+            listeners: {
+                'iron-form-element-register': '_registerElementPrint',
+            },
+
             properties: {
                 data: {
                     type: Object,
@@ -85,8 +89,14 @@ Dory Service Application Mapping Form Editor
             },
 
             _doValidate: function () {
-                this.$.form.validate();
-            }
+                var isValid =  this.$.form.validate();
+                console.log('Form is valid : ', isValid);
+            },
+
+            _registerElementPrint: function (e) {
+//                var element = Polymer.dom(e).rootTarget;
+//                console.log('register', element);
+            },
 
 
         });
