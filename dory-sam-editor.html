@@ -1,6 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
 
- 
 
 <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
@@ -16,6 +15,7 @@
 
 <link rel="import" href="dory-listbox.html">
 <link rel="import" href="dory-sam-editor-servers.html">
+<link rel="import" href="dory-sam-servers-validator.html">
 
 <!--
 `dory-sam-list`
@@ -35,22 +35,28 @@ Dory Service Application Mapping Form Editor
             }
         </style>
 
+        <form is="iron-form" id="form" method="post">
 
-        <paper-input value="{{data.app}}" required auto-validate
-                    maxlength="20" label="Applications"></paper-input>
-        <paper-textarea char-counter maxlength="1000"  required  label="Description"  value="{{data.description}}" ></paper-textarea>
+            <paper-input value="{{data.app}}" required auto-validate
+                         maxlength="20" label="Applications"></paper-input>
+            <paper-textarea char-counter maxlength="1000" required label="Description"
+                            value="{{data.description}}"></paper-textarea>
 
-        <dory-listbox selected="{{data.env}}" label="Environnements" code-labels="[[environments]]"></dory-listbox>
+            <dory-listbox selected="{{data.env}}" label="Environnements" code-labels="[[environments]]"></dory-listbox>
 
 
-        <paper-input value="{{data.uri}}" placeholder="www.example.com"  label="URI">
-            <div prefix>
-                http://
-            </div>
-            <paper-icon-button suffix icon="clear"></paper-icon-button>
-        </paper-input>
+            <paper-input value="{{data.uri}}" placeholder="www.example.com" label="URI">
+                <div prefix>
+                    http://
+                </div>
+                <paper-icon-button suffix icon="clear"></paper-icon-button>
+            </paper-input>
 
-        <dory-sam-editor-servers servers="{{data.servers}}"></dory-sam-editor-servers>
+            <dory-sam-editor-servers servers="{{data.servers}}" validator="dory-sam-servers-validator"></dory-sam-editor-servers>
+
+            <button type="submit">submit!</button>
+
+        </form>
 
     </template>
 

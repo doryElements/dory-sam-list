@@ -16,6 +16,9 @@
 
 <link rel="import" href="dory-listbox.html">
 
+<link rel="import" href="../iron-validator-behavior/iron-validator-behavior.html">
+<link rel="import" href="../iron-form-element-behavior/iron-form-element-behavior.html">
+
 <!--
 `dory-sam-editor-servers`
 
@@ -47,7 +50,8 @@
         <paper-card heading="Serveurs" alt="Serveurs" class="header">
             <div class="card-content">
                 <paper-fab icon="add" title="add" class="card-add-location" on-tap="_addServer"></paper-fab>
-
+                hasValidator : {{hasValidator()}}
+                hasValidator : {{validate()}}
                 <template is="dom-repeat" items="{{servers}}">
                     <div class="layout horizontal wrap end">
                         <dory-listbox label="Zone" selected="{{item.zone}}" code-labels="[[zones]]"></dory-listbox>
@@ -65,6 +69,11 @@
 
             is: 'dory-sam-editor-servers',
 
+            behaviors: [
+                Polymer.IronFormElementBehavior,
+                Polymer.IronValidatableBehavior
+            ],
+
             properties: {
                 servers: {
                     type: Array,
@@ -80,8 +89,23 @@
                         ];
                     }
                 },
+                validator: {
+                    type: String,
+                    value: 'dory-sam-servers-validator'
+                },
+                invalid: {
+                    notify: true,
+                    type: Boolean,
+                    value:true
+                }
             },
 
+            validate: function(values) {
+                return false;
+            },
+            _getValidity: function() {
+                return false;
+            },
             _addServer: function () {
                 if (!this.servers) {
                     this.set('servers', []);
