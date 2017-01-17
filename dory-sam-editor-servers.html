@@ -19,6 +19,7 @@
 <link rel="import" href="../iron-validator-behavior/iron-validator-behavior.html">
 <link rel="import" href="../iron-form-element-behavior/iron-form-element-behavior.html">
 <link rel="import" href="dory-sam-servers-validator.html">
+<link rel="import" href="../paper-button/paper-button.html">
 
 <!--
 `dory-sam-editor-servers`
@@ -32,6 +33,7 @@
         <style include="shared-styles iron-flex iron-flex-alignment iron-flex-factors">
             :host {
                 display: block;
+                margin-top: 8px;
             }
             :host[invalid] {
                 border-left: 1px solid red;
@@ -39,8 +41,14 @@
 
             .header {
                 --paper-card-header: {
-                    background-color: var(--paper-blue-400);
+                    background-color: var(--paper-grey-200);
                 }
+            }
+
+            .buttonadd {
+                background-color: var(--paper-grey-200);
+                margin: 8px;
+                @apply(--layout-vertical);
             }
 
             .card-add-location {
@@ -52,9 +60,9 @@
             }
 
         </style>
-        <paper-card heading="Serveurs" alt="Serveurs" class="header">
+        <paper-card heading="Serveurs" alt="Serveurs" class="header layout vertical">
             <div class="card-content">
-                <paper-fab icon="add" title="add" class="card-add-location" on-tap="_addServer"></paper-fab>
+                <!--<paper-fab icon="add" title="add" class="card-add-location" on-tap="_addServer"></paper-fab>-->
                 <template is="dom-repeat" items="{{servers}}">
                     <div class="layout horizontal wrap end">
                         <dory-listbox label="Zone" selected="{{item.zone}}" code-labels="[[zones]]"></dory-listbox>
@@ -63,6 +71,7 @@
                         </paper-input>
                     </div>
                 </template>
+                <paper-button class="buttonadd" on-tap="_addServer" raised>Ajouter un serveur</paper-button>
             </div>
         </paper-card>
     </template>

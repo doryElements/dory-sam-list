@@ -10,6 +10,8 @@
 <link rel="import" href="../paper-card/paper-card.html">
 <link rel="import" href="../paper-fab/paper-fab.html">
 <link rel="import" href="../paper-input/paper-textarea.html">
+<link rel="import" href="../paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../paper-button/paper-button.html">
 
 <link rel="import" href="../iron-form/iron-form.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
@@ -17,6 +19,7 @@
 <link rel="import" href="dory-listbox.html">
 <link rel="import" href="dory-sam-editor-servers.html">
 <link rel="import" href="dory-sam-servers-validator.html">
+<link rel="import" href="dory-sam-dyn-list.html">
 
 <!--
 `dory-sam-list`
@@ -37,28 +40,30 @@ Dory Service Application Mapping Form Editor
         </style>
 
         <dory-sam-servers-validator validator-name="dory-sam-servers-validator"></dory-sam-servers-validator>
-        <button on-tap="_doValidate">Validate</button>
-        <form is="iron-form" id="form"  >
+        <form is="iron-form" id="form">
 
             <paper-input value="{{data.app}}" required auto-validate
                          maxlength="20" label="Applications"></paper-input>
             <paper-textarea char-counter maxlength="1000" required label="Description"
                             value="{{data.description}}"></paper-textarea>
 
-            <dory-listbox selected="{{data.env}}" label="Environnements" code-labels="[[environments]]"></dory-listbox>
+            <div class="layout horizontal center">
+                <dory-listbox selected="{{data.env}}" label="Environnements" code-labels="[[environments]]"></dory-listbox>
+                <div class="flex"></div>
+                <paper-checkbox>Integration continue</paper-checkbox>
+            </div>
 
+            <dory-sam-dyn-list title="Urls" list="{{data.uris}}" button-label="Ajouter une Url" label-item="URI" placeholder="http://"></dory-sam-dyn-list>
 
-            <paper-input value="{{data.uri}}" placeholder="www.example.com" label="URI">
-                <div prefix>
-                    http://
-                </div>
-                <paper-icon-button suffix icon="clear"></paper-icon-button>
-            </paper-input>
+            <dory-sam-dyn-list title="Vips" list="{{data.vips}}" button-label="Ajouter un vip" label-item="Vip"></dory-sam-dyn-list>
 
-            <dory-sam-editor-servers servers="{{data.servers}}" validator="dory-sam-servers-validator"></dory-sam-editor-servers>
+            <dory-sam-editor-servers servers="{{data.servers}}"
+                                     validator="dory-sam-servers-validator"></dory-sam-editor-servers>
 
-            <button type="submit">submit!</button>
+            <dory-sam-dyn-list title="Databases" list="{{data.databases}}" button-label="Ajouter une bdd" label-item="Bdd"></dory-sam-dyn-list>
+
         </form>
+        <paper-button on-tap="_doValidate">Validate</paper-button>
 
     </template>
 
@@ -90,7 +95,7 @@ Dory Service Application Mapping Form Editor
             },
 
             _doValidate: function () {
-                var isValid =  this.$.form.validate();
+                var isValid = this.$.form.validate();
                 console.log('Form is valid : ', isValid);
             },
 
