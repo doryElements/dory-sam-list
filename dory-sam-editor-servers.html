@@ -18,6 +18,7 @@
 
 <link rel="import" href="../iron-validator-behavior/iron-validator-behavior.html">
 <link rel="import" href="../iron-form-element-behavior/iron-form-element-behavior.html">
+<link rel="import" href="dory-sam-servers-validator.html">
 
 <!--
 `dory-sam-editor-servers`
@@ -31,6 +32,9 @@
         <style include="shared-styles iron-flex iron-flex-alignment iron-flex-factors">
             :host {
                 display: block;
+            }
+            :host[invalid] {
+                border-left: 1px solid red;
             }
 
             .header {
@@ -46,12 +50,11 @@
                 top: -35px;
                 right: 40px;
             }
+
         </style>
         <paper-card heading="Serveurs" alt="Serveurs" class="header">
             <div class="card-content">
                 <paper-fab icon="add" title="add" class="card-add-location" on-tap="_addServer"></paper-fab>
-                hasValidator : {{hasValidator()}}
-                hasValidator : {{validate()}}
                 <template is="dom-repeat" items="{{servers}}">
                     <div class="layout horizontal wrap end">
                         <dory-listbox label="Zone" selected="{{item.zone}}" code-labels="[[zones]]"></dory-listbox>
@@ -89,22 +92,21 @@
                         ];
                     }
                 },
-                validator: {
-                    type: String,
-                    value: 'dory-sam-servers-validator'
-                },
-                invalid: {
-                    notify: true,
-                    type: Boolean,
-                    value:true
-                }
+//                validator: {
+//                    type: String,
+//                },
+//                invalid: {
+//                    notify: true,
+//                    type: Boolean,
+//                    value:true
+//                }
             },
 
-
-            _getValidity: function(values) {
-                console.log('----- _getValidity');
-                return true;
-            },
+            // Mécanisme prioritaire : le validator est ignoré si _getValidity est défini
+//            _getValidity: function(values) {
+//                console.log('----- _getValidity');
+//                return false;
+//            },
 
             _addServer: function () {
                 if (!this.servers) {
