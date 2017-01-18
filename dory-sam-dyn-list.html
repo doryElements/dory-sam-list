@@ -40,8 +40,12 @@
                 margin: 8px;
                 @apply(--layout-vertical);
             }
+            label {
+                color: var(--paper-grey-600);
+            }
         </style>
-        <paper-card heading="[[title]]" alt="[[title]]" class="header layout vertical">
+        <!--<paper-card heading="[[title]]" alt="[[title]]" class="header layout vertical">-->
+            <label>[[title]]</label>
             <div class="card-content">
             <template id="urls" is="dom-repeat" items="{{list}}" as="it">
                 <paper-input value="{{it.value}}" placeholder="[[placeholder]]" label="[[labelItem]] [[_add(index,1)]]">
@@ -53,7 +57,7 @@
             </template>
             <paper-button class="buttonadd" on-tap="_addElt" raised>[[buttonLabel]]</paper-button>
             </div>
-        </paper-card>
+        <!--</paper-card>-->
 
     </template>
 
