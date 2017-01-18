@@ -41,6 +41,7 @@ Dory Service Application Mapping Form Editor
         </style>
 
         <dory-sam-servers-validator validator-name="dory-sam-servers-validator"></dory-sam-servers-validator>
+        Edition de [[entityId]]
         <form is="iron-form" id="form">
 
             <paper-input value="{{data.app}}" required auto-validate
@@ -67,6 +68,7 @@ Dory Service Application Mapping Form Editor
 
         </form>
         <paper-button blabla on-tap="_doValidate">Validate</paper-button>
+        <paper-button blabla on-tap="_requestList">Back</paper-button>
 
     </template>
 
@@ -80,6 +82,9 @@ Dory Service Application Mapping Form Editor
             },
 
             properties: {
+                entityId : {
+                    type: String
+                },
                 data: {
                     type: Object,
                     notify: true,
@@ -107,6 +112,9 @@ Dory Service Application Mapping Form Editor
 //                console.log('register', element);
             },
 
+            _requestList: function (e) {
+                this.fire('dory-open-page', {page:'list'})
+            },
 
         });
     </script>
