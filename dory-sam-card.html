@@ -80,7 +80,7 @@ Custom property               | Description                                  | D
                     <dory-sam-card-item items="[[data.servers]]" icon="dns" class="cardServer"></dory-sam-card-item>
                     <dory-sam-card-item items="[[data.databases]]" icon="device:storage" class="cardStorage"></dory-sam-card-item>
                 </div>
-                <paper-fab icon="icons:create" title="edit" mini></paper-fab>
+                <paper-fab icon="icons:create" title="edit" on-tap="_requestEdit" mini></paper-fab>
             </div>
         </paper-card>
 
@@ -109,6 +109,10 @@ Custom property               | Description                                  | D
                         }
                     }
                 }
+            },
+
+            _requestEdit: function (e) {
+                this.fire('dory-open-page', {page:'edit', id:this.data.app})
             },
 
         });
